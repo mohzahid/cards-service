@@ -8,4 +8,12 @@ public class CardEnrolmentRequest {
     private String cardNumber;
     private String cardHolderName;
     private float cardBalance;
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public float getCardBalance() {
+        return cardBalance;
+    }
 }
