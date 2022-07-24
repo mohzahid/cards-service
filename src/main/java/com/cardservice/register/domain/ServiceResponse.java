@@ -1,10 +1,13 @@
 package com.cardservice.register.domain;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 
 public class ServiceResponse<T> {
     T response;
     HttpHeaders httpHeaders;
+
+    HttpStatus httpStatus;
 
     public T getResponse()
     {
@@ -21,5 +24,13 @@ public class ServiceResponse<T> {
 
     public void setHttpHeaders(HttpHeaders httpHeaders) {
         this.httpHeaders = httpHeaders;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
+
+    public void setHttpStatus(HttpStatus httpStatus) {
+        this.httpStatus = httpStatus;
     }
 }

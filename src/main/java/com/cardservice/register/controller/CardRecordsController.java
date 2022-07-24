@@ -3,6 +3,7 @@ package com.cardservice.register.controller;
 import com.cardservice.register.constants.CardRecordsConstants;
 import com.cardservice.register.domain.CardEnrolmentRequest;
 import com.cardservice.register.domain.CardEnrolmentResponse;
+import com.cardservice.register.domain.CardRecords;
 import com.cardservice.register.domain.ServiceResponse;
 import com.cardservice.register.service.CardManagementService;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 
 @RestController
@@ -25,19 +25,30 @@ public class CardRecordsController  {
     private static final String CLASSNAME = CardRecordsController.class.getName();
     private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
-
     @GetMapping(value = "/ping", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> pingCardRecordApplication()
     {
         LOGGER.info("Ping method invoked");
         return new ResponseEntity<String>("Ping Success", HttpStatus.OK);
     }
+
+    @RequestMapping(value="/enrol", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<CardEnrolmentResponse> addCard(@RequestBody CardEnrolmentRequest cardEnrolmentRequest)
     {
         LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat(" execute - addCard"));
 
         ServiceResponse<CardEnrolmentResponse> serviceResponse = cardManagementService.addCard(cardEnrolmentRequest);
 
-        return new ResponseEntity<CardEnrolmentResponse>(serviceResponse.getResponse(), serviceResponse.getHttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<CardEnrolmentResponse>(serviceResponse.getResponse(), serviceResponse.getHttpHeaders(), serviceResponse.getHttpStatus() );
+    }
+
+    @RequestMapping(value="getAll", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<CardRecords> getAllCards()
+    {
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat(" execute - getAllCards: "));
+
+        ServiceResponse<CardRecords> serviceResponse = cardManagementService.getAllCardRecords();
+
+        return new ResponseEntity<CardRecords>(serviceResponse.getResponse(), serviceResponse.getHttpHeaders(), serviceResponse.getHttpStatus());
     }
 }

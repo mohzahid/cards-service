@@ -1,16 +1,21 @@
 package com.cardservice.register.domain.enums;
 
+import org.springframework.http.HttpStatus;
+
 public enum EnrolmentOutcome {
-    PASSED("SUCCESS", "Card is Enrolled Successfully"),
-    FAILED("FAILED", "Card couldn't be added, try again");
+    PASSED("SUCCESS", "Card is Enrolled Successfully", HttpStatus.OK),
+    FAILED("FAILED", "Card couldn't be added, try again", HttpStatus.BAD_REQUEST);
 
     private final String status;
     private final String message;
 
-    EnrolmentOutcome(String status, String message)
+    private final HttpStatus httpStatus;
+
+    EnrolmentOutcome(String status, String message, HttpStatus httpStatus)
     {
         this.status = status;
         this.message = message;
+        this.httpStatus = httpStatus;
     }
 
     public String getStatus() {
@@ -21,4 +26,7 @@ public enum EnrolmentOutcome {
         return message;
     }
 
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
 }

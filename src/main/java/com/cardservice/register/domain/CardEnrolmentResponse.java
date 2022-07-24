@@ -1,4 +1,5 @@
 package com.cardservice.register.domain;
+
 public class CardEnrolmentResponse {
     private String result;
     private String message;
