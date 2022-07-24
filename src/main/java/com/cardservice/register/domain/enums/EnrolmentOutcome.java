@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 
 public enum EnrolmentOutcome {
     PASSED("SUCCESS", "Card is Enrolled Successfully", HttpStatus.OK),
-    FAILED("FAILED", "Card couldn't be added, try again", HttpStatus.BAD_REQUEST),
+    FAILED("FAILED", "Invalid Card, It couldn't be added, try again", HttpStatus.BAD_REQUEST),
     DUPLICATE("FAILED", "Card already exists, try again", HttpStatus.CONFLICT);
     private final String status;
     private final String message;

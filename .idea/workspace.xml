@@ -65,7 +65,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "gradle.compiler"
+    "settings.editor.selected.configurable": "copyright"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -77,7 +77,20 @@
       <recent name="com.cardservice.register.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CardManagementServiceImplTest">
+  <component name="RunManager" selected="Application.CardRecordsApplication">
+    <configuration name="CardRecordsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.execute.CardRecordsApplication" />
+      <module name="cardregister" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cardservice.register.execute.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CardManagementServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cardregister" />
       <extension name="coverage">
@@ -125,22 +138,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardManagementServiceImplTest.testGetAllCardDetails_SuccessResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cardregister" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cardservice.register.service.impl.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.cardservice.register.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.service.impl.CardManagementServiceImplTest" />
-      <option name="METHOD_NAME" value="testGetAllCardDetails_SuccessResponse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CardRecordsControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cardregister" />
       <extension name="coverage">
@@ -158,11 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CardRecordsApplication" />
         <item itemvalue="JUnit.CardManagementServiceImplTest" />
         <item itemvalue="JUnit.CardRecordsControllerTest" />
         <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_FailedResponse" />
         <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_SuccessResponse" />
-        <item itemvalue="JUnit.CardManagementServiceImplTest.testGetAllCardDetails_SuccessResponse" />
       </list>
     </recent_temporary>
   </component>

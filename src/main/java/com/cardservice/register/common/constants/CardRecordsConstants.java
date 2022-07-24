@@ -3,7 +3,7 @@ package com.cardservice.register.common.constants;
 public class CardRecordsConstants {
 
     public static final String METHOD_ENTRY = " >> Entered Method : ";
-    public static final String METHOD_EXIT  = " << Exit Method : ";
+    public static final String METHOD_EXIT = " << Exit Method : ";
 
     public static final int MIN_CARD_LENGTH = 16;
 

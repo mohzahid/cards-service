@@ -5,18 +5,17 @@ import com.cardservice.register.dao.CardDetails;
 import java.util.List;
 
 public class CardRecords {
+    private List<CardDetails> listCards;
 
-    private List<CardDetails> listCardDetails;
-
-    public CardRecords(List<CardDetails> listCardDetails) {
-        this.listCardDetails = listCardDetails;
+    public CardRecords(List<CardDetails> listCards) {
+        this.listCards = listCards;
     }
 
-    public List<CardDetails> getListCardDetails() {
-        return listCardDetails;
+    public List<CardDetails> getListCards() {
+        return listCards;
     }
 
-    public void setListCardDetails(List<CardDetails> listCardDetails) {
-        this.listCardDetails = listCardDetails;
+    public void setListCards(List<CardDetails> listCards) {
+        this.listCards = listCards;
     }
 }

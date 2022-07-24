@@ -2,6 +2,7 @@ package com.cardservice.register.service.impl;
 
 import com.cardservice.register.common.constants.CardRecordsConstants;
 import com.cardservice.register.common.exception.CardServiceException;
+import com.cardservice.register.common.utility.Util;
 import com.cardservice.register.dao.CardDetails;
 import com.cardservice.register.dao.CardManagementRepository;
 import com.cardservice.register.domain.CardEnrolmentRequest;
@@ -27,49 +28,27 @@ public class CardManagementServiceImpl implements CardManagementService {
 
     @Autowired
     CardManagementRepository cardManagementRepository;
-
     private static final String CLASSNAME = CardManagementServiceImpl.class.getName();
     private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
-    private boolean isLuhn10CheckPassed(String cardNumber) {
-        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("execute - isLuhn10CheckPassed"));
-
-        int length = cardNumber.length();
-        int digit = 0;
-        int luhn10Sum = 0;
-        boolean isSecondDigit = false;
-
-        LOGGER.info(CLASSNAME.concat("In Luhn10 check :")+length);
-        if (length >= CardRecordsConstants.MIN_CARD_LENGTH && length <= CardRecordsConstants.MAX_CARD_LENGTH) {
-            while (--length >= 0) {
-
-                LOGGER.info(CLASSNAME.concat("In Luhn10 check :").concat(String.valueOf(cardNumber.charAt(length))));
-                digit = cardNumber.charAt(length) - '0';
-                if (digit >= 0 && digit <= 9) {
-                    if (isSecondDigit) {
-                        digit = digit * 2;
-                    }
-
-                    luhn10Sum += digit / 10;
-                    luhn10Sum += digit % 10;
-
-                    isSecondDigit = !isSecondDigit;
-                } else
-                    return false;
-            }
-            LOGGER.debug(CLASSNAME.concat("Inside Luhn10 check").concat(Integer.toString(luhn10Sum)));
-            return (0 == luhn10Sum % 10);
-        } else
-            return false;
-    }
-
+    /**
+     * Method to validate card details in Request.
+     * @param cardEnrolmentRequest
+     * @return
+     */
     private boolean isCardDetailsValid(CardEnrolmentRequest cardEnrolmentRequest) {
-        if (isLuhn10CheckPassed(cardEnrolmentRequest.getCardNumber())) {
+        if (Util.isLuhn10CheckPassed(cardEnrolmentRequest.getCardNumber())) {
             return (0 == cardEnrolmentRequest.getCardLimit());
         }
         return false;
     }
 
+    /**
+     * Service layer to add the new card
+     * @param cardEnrolmentRequest
+     * @return : SUCCESS if card is added successfully
+     *           FAILED if card already exists
+     */
     @Override
     public ServiceResponse<CardEnrolmentResponse> addCard(CardEnrolmentRequest cardEnrolmentRequest) {
 
@@ -108,6 +87,11 @@ public class CardManagementServiceImpl implements CardManagementService {
         return serviceResponse;
     }
 
+    /**
+     * This method is used to retrieve all enrolled card from the DB.
+     * @return : list of cards if atleast one card is found in DB.
+     *           empty list and response code 204 if not record in DB.
+     */
     @Override
     public ServiceResponse<CardRecords> getAllCardRecords() {
         LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("execute - addCard"));
