@@ -15,12 +15,25 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/common/constants/CardRecordsConstants.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/controller/CardRecordsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/dao/CardDetails.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/dao/CardManagementRepository.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/domain/CardEnrolmentRequest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/domain/CardRecords.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/domain/ServiceResponse.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/execute/CardRecordsApplication.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/service/CardManagementService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cardservice/register/service/impl/CardManagementServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -42,34 +55,114 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/cards-service-&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;gradle.compiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "E:/cards-service-",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "gradle.compiler"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="CardRecordsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.execute.CardRecordsApplication" />
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.cardservice.register.service.impl" />
+      <recent name="com.cardservice.register.controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.CardManagementServiceImplTest">
+    <configuration name="CardManagementServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cardregister" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cardservice.register.execute.*" />
+          <option name="PATTERN" value="com.cardservice.register.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.cardservice.register.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.service.impl.CardManagementServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardManagementServiceImplTest.testAddCard_FailedResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cardregister" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cardservice.register.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cardservice.register.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.service.impl.CardManagementServiceImplTest" />
+      <option name="METHOD_NAME" value="testAddCard_FailedResponse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardManagementServiceImplTest.testAddCard_SuccessResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cardregister" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cardservice.register.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cardservice.register.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.service.impl.CardManagementServiceImplTest" />
+      <option name="METHOD_NAME" value="testAddCard_SuccessResponse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardManagementServiceImplTest.testGetAllCardDetails_SuccessResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cardregister" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cardservice.register.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cardservice.register.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.service.impl.CardManagementServiceImplTest" />
+      <option name="METHOD_NAME" value="testGetAllCardDetails_SuccessResponse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardRecordsControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cardregister" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cardservice.register.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cardservice.register.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.cardservice.register.controller.CardRecordsControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CardRecordsApplication" />
+        <item itemvalue="JUnit.CardManagementServiceImplTest" />
+        <item itemvalue="JUnit.CardRecordsControllerTest" />
+        <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_FailedResponse" />
+        <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_SuccessResponse" />
+        <item itemvalue="JUnit.CardManagementServiceImplTest.testGetAllCardDetails_SuccessResponse" />
       </list>
     </recent_temporary>
   </component>

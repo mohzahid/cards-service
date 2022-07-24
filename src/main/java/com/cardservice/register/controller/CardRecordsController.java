@@ -1,6 +1,6 @@
 package com.cardservice.register.controller;
 
-import com.cardservice.register.constants.CardRecordsConstants;
+import com.cardservice.register.common.constants.CardRecordsConstants;
 import com.cardservice.register.domain.CardEnrolmentRequest;
 import com.cardservice.register.domain.CardEnrolmentResponse;
 import com.cardservice.register.domain.CardRecords;

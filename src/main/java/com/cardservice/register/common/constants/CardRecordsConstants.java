@@ -1,4 +1,4 @@
-package com.cardservice.register.constants;
+package com.cardservice.register.common.constants;
 
 public class CardRecordsConstants {
 

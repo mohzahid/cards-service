@@ -1,6 +1,7 @@
 package com.cardservice.register.service.impl;
 
-import com.cardservice.register.constants.CardRecordsConstants;
+import com.cardservice.register.common.constants.CardRecordsConstants;
+import com.cardservice.register.common.exception.CardServiceException;
 import com.cardservice.register.dao.CardDetails;
 import com.cardservice.register.dao.CardManagementRepository;
 import com.cardservice.register.domain.CardEnrolmentRequest;
@@ -79,7 +80,15 @@ public class CardManagementServiceImpl implements CardManagementService {
         ServiceResponse<CardEnrolmentResponse> serviceResponse = new ServiceResponse<>();
 
         if (isCardDetailsValid(cardEnrolmentRequest)) {
-            cardManagementRepository.save(cardDetails);
+
+            CardDetails cardDetailsAlreadyExist = cardManagementRepository.findById(cardDetails.getCardNumber())
+                            .orElse(null);
+            if (null == cardDetailsAlreadyExist) {
+                cardManagementRepository.save(cardDetails);
+            }
+            else {
+                throw new CardServiceException(EnrolmentOutcome.DUPLICATE.getMessage());
+            }
 
             cardEnrolmentResponse.setResult(EnrolmentOutcome.PASSED.getStatus());
             cardEnrolmentResponse.setMessage(EnrolmentOutcome.PASSED.getMessage());
@@ -103,17 +112,22 @@ public class CardManagementServiceImpl implements CardManagementService {
     public ServiceResponse<CardRecords> getAllCardRecords() {
         LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("execute - addCard"));
 
+        ServiceResponse<CardRecords> serviceResponse = new ServiceResponse<>();
+
         List<CardDetails> listCardDetails = new ArrayList<>();
 
         cardManagementRepository.findAll().forEach(listCardDetails::add);
 
         CardRecords cardRecords = new CardRecords(listCardDetails);
 
-        ServiceResponse<CardRecords> serviceResponse = new ServiceResponse<>();
-        serviceResponse.setResponse(cardRecords);
-        serviceResponse.setHttpStatus(HttpStatus.OK);
-
-        LOGGER.info(CLASSNAME.concat(com.cardservice.register.constants.CardRecordsConstants.METHOD_EXIT).concat("exiting - addCard"));
+            serviceResponse.setResponse(cardRecords);
+        if( 0 != listCardDetails.size() ) {
+            serviceResponse.setHttpStatus(HttpStatus.OK);
+        }
+        else {
+            serviceResponse.setHttpStatus(HttpStatus.NO_CONTENT);
+        }
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_EXIT).concat("exiting - addCard"));
         return serviceResponse;
     }
 }

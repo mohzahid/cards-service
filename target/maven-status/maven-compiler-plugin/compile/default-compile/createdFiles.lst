@@ -1,5 +1,0 @@
-com\cardservice\register\constants\CardRecordsConstants.class
-com\cardservice\register\controller\CardRecordsController.class
-com\cardservice\register\domain\CardEnrolmentResponse.class
-com\cardservice\register\domain\CardEnrolmentRequest.class
-com\cardservice\register\execute\CardRecordsApplication.class
