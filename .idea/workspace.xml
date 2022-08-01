@@ -14,8 +14,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -65,7 +65,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "copyright"
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -156,10 +156,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CardRecordsApplication" />
-        <item itemvalue="JUnit.CardManagementServiceImplTest" />
         <item itemvalue="JUnit.CardRecordsControllerTest" />
-        <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_FailedResponse" />
+        <item itemvalue="JUnit.CardManagementServiceImplTest" />
         <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_SuccessResponse" />
+        <item itemvalue="JUnit.CardManagementServiceImplTest.testAddCard_FailedResponse" />
       </list>
     </recent_temporary>
   </component>
@@ -173,6 +173,17 @@
       <updated>1658575554261</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/cardservice/register/service/impl/CardManagementServiceImplTest.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

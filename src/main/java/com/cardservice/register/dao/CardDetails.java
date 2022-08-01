@@ -12,12 +12,9 @@ public class CardDetails {
     private String cardHolderName;
     private float cardLimit;
     private float cardBalance;
-
     public CardDetails( ) {
 
     }
-
-
     public CardDetails(String cardNumber, String cardHolderName, float cardLimit, float cardBalance) {
         this.cardNumber = cardNumber;
         this.cardHolderName = cardHolderName;
@@ -29,7 +26,7 @@ public class CardDetails {
         this.cardNumber = cardEnrolmentRequest.getCardNumber();
         this.cardHolderName = cardEnrolmentRequest.getCardHolderName();
         this.cardLimit = cardEnrolmentRequest.getCardLimit();
-        this.cardBalance = 0;
+        this.cardBalance = this.cardLimit;
     }
 
     public String getCardNumber() {

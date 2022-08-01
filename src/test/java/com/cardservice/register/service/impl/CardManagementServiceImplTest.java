@@ -1,5 +1,6 @@
 package com.cardservice.register.service.impl;
 
+import com.cardservice.register.common.exception.CardServiceException;
 import com.cardservice.register.dao.CardDetails;
 import com.cardservice.register.dao.CardManagementRepository;
 import com.cardservice.register.domain.CardEnrolmentRequest;
@@ -25,18 +26,14 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CardRecordsApplication.class)
 class CardManagementServiceImplTest {
-
     @InjectMocks
     CardManagementServiceImpl cardManagementService;
-
     @Mock
     CardManagementRepository cardManagementRepository;
-
     @Mock
     CardDetails cardDetails;
-
     @Test
-    public void testAddCard_SuccessResponse() {
+    public void testAddCard_SuccessResponse() throws CardServiceException {
 
         CardEnrolmentRequest cardEnrolmentRequest = getCardDetails("4546384820443365");
 
@@ -47,10 +44,8 @@ class CardManagementServiceImplTest {
 
         assertThat(serviceResponse.getResponse().getResult().equalsIgnoreCase(EnrolmentOutcome.PASSED.getStatus()));
     }
-
-
     @Test
-    public void testAddCard_FailedResponse() {
+    public void testAddCard_FailedResponse() throws CardServiceException {
         CardEnrolmentRequest cardEnrolmentRequest = getCardDetails("4546384820443367");
 
         when(cardManagementRepository.save(cardDetails)).thenReturn(null);
@@ -59,7 +54,6 @@ class CardManagementServiceImplTest {
 
         assertThat(serviceResponse.getResponse().getResult().equalsIgnoreCase(EnrolmentOutcome.FAILED.getStatus()));
     }
-
     @Test
     public void testGetAllCardDetails_SuccessResponse() {
 
@@ -74,7 +68,6 @@ class CardManagementServiceImplTest {
 
         assertThat(serviceResponse.getHttpStatus().toString().equalsIgnoreCase("200"));
     }
-
     @Test
     public void testGetAllCardDetails_NoContentResponse() {
 
@@ -89,8 +82,6 @@ class CardManagementServiceImplTest {
 
         assertThat(serviceResponse.getHttpStatus().toString().equalsIgnoreCase("204"));
     }
-
-
     private CardEnrolmentRequest getCardDetails(String cardNumber) {
         CardEnrolmentRequest cardEnrolmentRequest = new CardEnrolmentRequest();
         cardEnrolmentRequest.setCardNumber(cardNumber);
@@ -99,6 +90,5 @@ class CardManagementServiceImplTest {
 
         return cardEnrolmentRequest;
     }
-
 
 }

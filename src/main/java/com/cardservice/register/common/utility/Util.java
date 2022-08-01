@@ -18,13 +18,15 @@ public class Util {
     public static boolean isLuhn10CheckPassed(String cardNumber) {
         LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("execute - isLuhn10CheckPassed"));
 
-        int length = cardNumber.length();
         int digit = 0;
         int luhn10Sum = 0;
         boolean isSecondDigit = false;
         boolean bRet = false;
 
-        LOGGER.debug(CLASSNAME.concat("In Luhn10 check :") + length);
+        cardNumber = cardNumber.replaceAll("\\s+","");
+        int length = cardNumber.length();
+
+        LOGGER.info(CLASSNAME.concat("card number is-").concat(cardNumber));
         if (length >= CardRecordsConstants.MIN_CARD_LENGTH && length <= CardRecordsConstants.MAX_CARD_LENGTH) {
             while (--length >= 0) {
 
@@ -45,11 +47,11 @@ public class Util {
                 }
             }
             LOGGER.debug(CLASSNAME.concat("Inside Luhn10 check").concat(Integer.toString(luhn10Sum)));
-            bRet = (0 == luhn10Sum % 10);
+            bRet = ((0 == luhn10Sum % 10) && (0 != luhn10Sum / 10));
         } else
             bRet = false;
 
-        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("exit - isLuhn10CheckPassed"));
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_EXIT).concat(" exiting - isLuhn10CheckPassed : ").concat(String.valueOf(bRet)));
 
         return bRet;
     }

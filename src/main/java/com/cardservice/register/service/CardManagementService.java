@@ -6,6 +6,6 @@ import com.cardservice.register.domain.CardEnrolmentResponse;
 import com.cardservice.register.domain.ServiceResponse;
 
 public interface CardManagementService {
-    com.cardservice.register.domain.ServiceResponse<CardEnrolmentResponse> addCard(CardEnrolmentRequest cardEnrolmentRequest);
+    ServiceResponse<CardEnrolmentResponse> addCard(CardEnrolmentRequest cardEnrolmentRequest);
     ServiceResponse<CardRecords> getAllCardRecords();
 }

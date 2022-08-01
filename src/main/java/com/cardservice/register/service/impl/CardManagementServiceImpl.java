@@ -20,14 +20,10 @@ import org.springframework.stereotype.Service;
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 @Service
 public class CardManagementServiceImpl implements CardManagementService {
-
     @Autowired
-    CardManagementRepository cardManagementRepository;
+    private CardManagementRepository cardManagementRepository;
     private static final String CLASSNAME = CardManagementServiceImpl.class.getName();
     private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -36,9 +32,10 @@ public class CardManagementServiceImpl implements CardManagementService {
      * @param cardEnrolmentRequest
      * @return
      */
-    private boolean isCardDetailsValid(CardEnrolmentRequest cardEnrolmentRequest) {
+    private final boolean isCardDetailsValid(CardEnrolmentRequest cardEnrolmentRequest) {
         if (Util.isLuhn10CheckPassed(cardEnrolmentRequest.getCardNumber())) {
-            return (0 == cardEnrolmentRequest.getCardLimit());
+            return ((0 <= cardEnrolmentRequest.getCardLimit()) &&
+                    (0 < cardEnrolmentRequest.getCardHolderName().length()));
         }
         return false;
     }
@@ -50,9 +47,9 @@ public class CardManagementServiceImpl implements CardManagementService {
      *           FAILED if card already exists
      */
     @Override
-    public ServiceResponse<CardEnrolmentResponse> addCard(CardEnrolmentRequest cardEnrolmentRequest) {
+    public ServiceResponse<CardEnrolmentResponse> addCard(CardEnrolmentRequest cardEnrolmentRequest) throws CardServiceException {
 
-        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("execute - addCard"));
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat(" execute - addCard"));
 
         CardDetails cardDetails = new CardDetails(cardEnrolmentRequest);
         CardEnrolmentResponse cardEnrolmentResponse = new CardEnrolmentResponse();
@@ -66,23 +63,24 @@ public class CardManagementServiceImpl implements CardManagementService {
                 cardManagementRepository.save(cardDetails);
             }
             else {
+                LOGGER.info(CLASSNAME.concat(" In addCard -").concat(EnrolmentOutcome.DUPLICATE.getMessage()));
                 throw new CardServiceException(EnrolmentOutcome.DUPLICATE.getMessage());
             }
 
             cardEnrolmentResponse.setResult(EnrolmentOutcome.PASSED.getStatus());
             cardEnrolmentResponse.setMessage(EnrolmentOutcome.PASSED.getMessage());
             serviceResponse.setHttpStatus(EnrolmentOutcome.PASSED.getHttpStatus());
-            LOGGER.debug(CLASSNAME.concat(" In addCard -").concat(EnrolmentOutcome.PASSED.getStatus()));
+            LOGGER.debug(CLASSNAME.concat(" In addCard -").concat(EnrolmentOutcome.PASSED.getMessage()));
         } else {
             cardEnrolmentResponse.setResult(EnrolmentOutcome.FAILED.getStatus());
             cardEnrolmentResponse.setMessage(EnrolmentOutcome.FAILED.getMessage());
             serviceResponse.setHttpStatus(EnrolmentOutcome.FAILED.getHttpStatus());
 
-            LOGGER.debug(CLASSNAME.concat(" In addCard -").concat(EnrolmentOutcome.FAILED.getStatus()));
+            LOGGER.debug(CLASSNAME.concat(" In addCard -").concat(EnrolmentOutcome.FAILED.getMessage()));
         }
         serviceResponse.setResponse(cardEnrolmentResponse);
 
-        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_EXIT).concat("exiting - addCard"));
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_EXIT).concat(" exiting - addCard"));
 
         return serviceResponse;
     }
@@ -94,7 +92,7 @@ public class CardManagementServiceImpl implements CardManagementService {
      */
     @Override
     public ServiceResponse<CardRecords> getAllCardRecords() {
-        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat("execute - addCard"));
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_ENTRY).concat(" execute - getAllCardRecords"));
 
         ServiceResponse<CardRecords> serviceResponse = new ServiceResponse<>();
 
@@ -109,9 +107,10 @@ public class CardManagementServiceImpl implements CardManagementService {
             serviceResponse.setHttpStatus(HttpStatus.OK);
         }
         else {
+            LOGGER.debug(CLASSNAME.concat(" In getAllCardRecords -").concat(" No records found"));
             serviceResponse.setHttpStatus(HttpStatus.NO_CONTENT);
         }
-        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_EXIT).concat("exiting - addCard"));
+        LOGGER.info(CLASSNAME.concat(CardRecordsConstants.METHOD_EXIT).concat(" exiting - getAllCardRecords"));
         return serviceResponse;
     }
 }
